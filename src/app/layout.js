@@ -2,6 +2,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import GlobalBackground from "@/components/GlobalBackground";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -25,6 +26,11 @@ export const metadata = {
     "Portfolio",
   ],
   authors: [{ name: "Sahul Kumar" }],
+  icons: {
+    icon: "/favicon.png",
+    shortcut: "/favicon.png",
+    apple: "/favicon.png",
+  },
 };
 
 export default function RootLayout({ children }) {
@@ -33,12 +39,11 @@ export default function RootLayout({ children }) {
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-white text-gray-900`}
       >
+        <GlobalBackground />
         <Navbar />
 
         {/* Main Content */}
-        <main className="min-h-screen mt-8">
-          {children}
-        </main>
+        <main className="min-h-screen mt-8">{children}</main>
       </body>
     </html>
   );

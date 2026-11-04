@@ -1,3 +1,4 @@
+
 "use client";
 
 import { motion } from "framer-motion";
@@ -8,7 +9,7 @@ const experiences = [
     id: 1,
     duration: "Jan 2026 - Present",
     title: "SDE1 (Software Development Engineer)",
-    company: "Placetie",
+    company: "PlaceTie",
     description:
       "Working on a US market focused EdTech platform. Building scalable architecture, optimized frontend and backend systems using Next.js and Firebase.",
   },
@@ -30,15 +31,11 @@ export default function ExperienceSection() {
       whileInView={{ opacity: 1 }}
       transition={{ duration: 0.6 }}
       viewport={{ once: true }}
-      className="relative w-full py-28 bg-[#0b1120] text-white overflow-hidden px-6"
+      className="relative w-full py-28 text-white overflow-hidden px-6"
     >
-      {/* Background Glow */}
-      <div className="absolute top-[-120px] left-[-120px] w-[350px] h-[350px] bg-violet-600/20 rounded-full blur-[120px] pointer-events-none" />
-      <div className="absolute bottom-[-120px] right-[-120px] w-[350px] h-[350px] bg-pink-600/20 rounded-full blur-[120px] pointer-events-none" />
-
       <div className="max-w-6xl mx-auto relative">
 
-        {/* Section Title Animation */}
+        {/* SECTION HEADER */}
         <motion.div
           initial={{ y: 40, opacity: 0 }}
           whileInView={{ y: 0, opacity: 1 }}
@@ -48,24 +45,26 @@ export default function ExperienceSection() {
         >
           <h2 className="text-4xl md:text-5xl font-bold">
             My{" "}
-            <span className="bg-gradient-to-r from-pink-500 to-violet-600 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-[var(--primary)] via-[var(--secondary)] to-[var(--accent)] bg-clip-text text-transparent">
               Experience
             </span>
           </h2>
+
           <p className="text-gray-400 mt-6 text-lg">
             My professional journey in software development
           </p>
         </motion.div>
 
-        {/* Animated Timeline Line */}
+        {/* TIMELINE LINE */}
         <motion.div
           initial={{ height: 0 }}
           whileInView={{ height: "100%" }}
           transition={{ duration: 1 }}
           viewport={{ once: true }}
-          className="hidden md:block absolute left-1/2 top-0 w-[2px] bg-gradient-to-b from-transparent via-pink-500/40 to-transparent"
+          className="hidden md:block absolute left-1/2 top-0 w-[2px] bg-gradient-to-b from-transparent via-[var(--secondary)]/50 to-transparent"
         />
 
+        {/* EXPERIENCE ITEMS */}
         <div className="space-y-20">
           {experiences.map((exp, index) => {
             const isLeft = index % 2 === 0;
@@ -81,35 +80,44 @@ export default function ExperienceSection() {
                   isLeft ? "md:justify-start" : "md:justify-end"
                 }`}
               >
-                {/* Timeline Dot Pop Animation */}
+                {/* TIMELINE DOT */}
                 <motion.div
                   initial={{ scale: 0 }}
                   whileInView={{ scale: 1 }}
-                  transition={{ type: "spring", stiffness: 300, delay: 0.3 }}
+                  transition={{
+                    type: "spring",
+                    stiffness: 300,
+                    delay: 0.3,
+                  }}
                   viewport={{ once: true }}
-                  className="absolute md:left-1/2 md:-translate-x-1/2 w-6 h-6 bg-gradient-to-r from-pink-500 to-violet-600 rounded-full shadow-lg z-10 border-4 border-[#0b1120]"
+                  className="absolute md:left-1/2 md:-translate-x-1/2 w-6 h-6 bg-gradient-to-r from-[var(--primary)] to-[var(--secondary)] rounded-full shadow-lg shadow-cyan-500/30 z-10 border-4 border-[#030712]"
                 />
 
-                {/* Card */}
+                {/* EXPERIENCE CARD */}
                 <div
                   className={`w-full md:w-[45%] ${
-                    isLeft ? "md:mr-auto md:pr-12" : "md:ml-auto md:pl-12"
+                    isLeft
+                      ? "md:mr-auto md:pr-12"
+                      : "md:ml-auto md:pl-12"
                   }`}
                 >
                   <motion.div
-                    whileHover={{ scale: 1.03 }}
-                    className="relative p-[1px] rounded-2xl bg-gradient-to-br from-pink-500/40 via-purple-500/30 to-violet-500/40"
+                    whileHover={{ scale: 1.03, y: -5 }}
+                    transition={{ duration: 0.3 }}
+                    className="relative p-[1px] rounded-2xl bg-gradient-to-br from-[var(--primary)]/50 via-[var(--secondary)]/30 to-[var(--accent)]/40"
                   >
-                    <div className="bg-[#0f172a]/80 backdrop-blur-xl border border-white/10 rounded-2xl p-8 shadow-xl hover:shadow-pink-500/20 transition duration-300">
+                    <div className="bg-[var(--surface)]/90 backdrop-blur-xl border border-[var(--border)] rounded-2xl p-8 shadow-xl hover:shadow-cyan-500/15 transition duration-300">
 
-                      <p className="text-sm text-[#16f2b3] font-medium mb-3">
+                      {/* DURATION */}
+                      <p className="text-sm text-[var(--secondary)] font-medium mb-3">
                         {exp.duration}
                       </p>
 
+                      {/* ROLE */}
                       <div className="flex items-start gap-4 mb-4">
-                        <div className="p-3 bg-white/5 rounded-xl border border-white/10">
+                        <div className="p-3 bg-[var(--primary)]/10 rounded-xl border border-[var(--secondary)]/20">
                           <BsPersonWorkspace
-                            className="text-violet-400"
+                            className="text-[var(--secondary)]"
                             size={24}
                           />
                         </div>
@@ -118,12 +126,14 @@ export default function ExperienceSection() {
                           <h3 className="text-xl font-semibold">
                             {exp.title}
                           </h3>
-                          <p className="text-gray-400 text-sm">
+
+                          <p className="text-gray-400 text-sm mt-1">
                             {exp.company}
                           </p>
                         </div>
                       </div>
 
+                      {/* DESCRIPTION */}
                       <p className="text-gray-300 leading-relaxed">
                         {exp.description}
                       </p>
@@ -135,7 +145,6 @@ export default function ExperienceSection() {
             );
           })}
         </div>
-
       </div>
     </motion.section>
   );

@@ -1,5 +1,3 @@
-// data/projects.js
-
 export const projects = [
   {
     title: "Placetie - US Market EdTech Platform",
@@ -11,12 +9,11 @@ export const projects = [
       "Interactive Dashboards",
       "Live Webinar System",
       "Razorpay Payment Integration",
-      "Secure & Scalable Architecture"
+      "Secure & Scalable Architecture",
     ],
     image: "/mockups/placetie.png",
     live: "https://placetie.us",
   },
-
   {
     title: "BookMyUtsav – Event Vendor Marketplace",
     role: "Full Stack Developer",
@@ -27,12 +24,11 @@ export const projects = [
       "Vendor Dashboard",
       "Real-Time Filtering",
       "Admin Control Panel",
-      "Direct Vendor Communication"
+      "Direct Vendor Communication",
     ],
     image: "/mockups/bookmyutsav.png",
     live: "https://bookmyutsav.in",
   },
-
   {
     title: "Edrix – EdTech & Franchise System",
     role: "Full Stack Developer",
@@ -43,12 +39,11 @@ export const projects = [
       "Franchise Management Module",
       "Admin Panel",
       "Course Management System",
-      "Performance Monitoring"
+      "Performance Monitoring",
     ],
     image: "/mockups/edrix.png",
     live: "https://edrix.in",
   },
-
   {
     title: "QR Digital Menu System",
     role: "Full Stack Developer",
@@ -59,12 +54,11 @@ export const projects = [
       "Kitchen Integration",
       "Admin Analytics Dashboard",
       "Order Management",
-      "Real-Time Menu Updates"
+      "Real-Time Menu Updates",
     ],
     image: "/mockups/qrdigital.png",
     live: "https://kantra-digital-menu",
   },
-
   {
     title: "Kartik Travels – Cab & CRM System",
     role: "Full Stack Developer",
@@ -75,25 +69,25 @@ export const projects = [
       "Booking System",
       "CRM Dashboard",
       "Customer Data Handling",
-      "Reporting System"
+      "Reporting System",
     ],
     image: "/mockups/kartiktravels.png",
     live: "https://kartiktravels.in",
   },
-
-//   {
-//     title: "Prindey – Corporate Event Platform",
-//     role: "Full Stack Developer",
-//     description:
-//       "Corporate event management system enabling businesses to organize and manage professional events efficiently.",
-//     features: [
-//       "Event Workflow Management",
-//       "Vendor Coordination",
-//       "Admin Dashboard",
-//       "Client Management",
-//       "Event Scheduling System"
-//     ],
-//     image: "/mockups/prindey.png",
-//     live: "https://prindey.co",
-//   },
+  {
+    title: "Marginly – Ecommerce Profit Calculator",
+    role: "Full Stack Developer | Personal Project",
+    description:
+      "Ecommerce profit calculator that helps sellers estimate product profitability by calculating revenue, expenses, delivery costs, advertising spend and net profit in real time.",
+    features: [
+      "Live Profit Calculation",
+      "Revenue & Expense Tracking",
+      "Delivery & Shipping Cost Analysis",
+      "Profit Margin Analysis",
+      "CSV / JSON Export",
+      "Responsive Dashboard",
+    ],
+    image: "/mockups/marginly.png",
+    live: "https://marginly-five.vercel.app/",
+  },
 ];

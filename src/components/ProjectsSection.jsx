@@ -9,99 +9,128 @@ export default function ProjectsSection() {
   return (
     <section
       id="projects"
-      className="relative w-full py-28 bg-[#0b1120] text-white overflow-hidden px-6"
+      className="relative w-full overflow-hidden px-6 py-24 md:py-28 text-white"
     >
-      <div className="max-w-7xl mx-auto">
-
-        {/* Section Title */}
+      <div className="mx-auto max-w-7xl">
+        {/* Section Heading */}
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7 }}
           viewport={{ once: true }}
-          className="text-center mb-24"
+          className="mb-20 text-center md:mb-24"
         >
-          <h2 className="text-4xl md:text-5xl font-bold">
+          <p className="mb-4 text-sm font-semibold uppercase tracking-[0.3em] text-[var(--accent)]">
+            My Portfolio
+          </p>
+
+          <h2 className="text-4xl font-bold md:text-5xl">
             Things I've{" "}
-            <span className="bg-gradient-to-r from-pink-500 to-violet-600 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-[var(--primary)] to-[var(--secondary)] bg-clip-text text-transparent">
               Built
             </span>
           </h2>
-          <p className="text-gray-400 mt-6 text-lg">
-            Real-world production projects
+
+          <p className="mt-6 text-base text-gray-400 md:text-lg">
+            Real-world projects built with modern technologies.
           </p>
         </motion.div>
 
-        <div className="space-y-32">
+        {/* Projects */}
+        <div className="space-y-24 md:space-y-32">
           {projects.map((project, index) => {
             const isReverse = index % 2 !== 0;
 
             return (
               <div
-                key={index}
-                className="grid lg:grid-cols-2 gap-16 items-center"
+                key={project.title || index}
+                className="grid items-center gap-10 lg:grid-cols-2 lg:gap-16"
               >
-                {/* TEXT */}
+                {/* Project Details */}
                 <motion.div
-                  initial={{ opacity: 0, x: isReverse ? 80 : -80 }}
+                  initial={{ opacity: 0, x: isReverse ? 60 : -60 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.8 }}
-                  viewport={{ once: true }}
+                  viewport={{ once: true, amount: 0.2 }}
                   className={isReverse ? "lg:order-2" : ""}
                 >
-                  <h3 className="text-3xl md:text-4xl font-bold mb-4 bg-gradient-to-r from-pink-500 to-violet-600 bg-clip-text text-transparent">
+                  <span className="mb-4 inline-block text-sm font-medium text-[var(--accent)]">
+                    Featured Project / 0{index + 1}
+                  </span>
+
+                  <h3 className="mb-4 bg-gradient-to-r from-[var(--primary)] to-[var(--secondary)] bg-clip-text text-3xl font-bold text-transparent md:text-4xl">
                     {project.title}
                   </h3>
 
-                  <p className="text-sm text-pink-400 mb-4">
+                  <p className="mb-5 text-sm font-medium text-[var(--accent)]">
                     {project.role}
                   </p>
 
-                  <p className="text-gray-300 leading-relaxed mb-6">
+                  <p className="mb-7 leading-relaxed text-gray-300">
                     {project.description}
                   </p>
 
                   {/* Features */}
-                  <div className="flex flex-wrap gap-3 mb-6">
+                  <div className="mb-8 flex flex-wrap gap-3">
                     {project.features.map((feature, i) => (
                       <span
                         key={i}
-                        className="px-3 py-1 text-xs bg-white/5 border border-white/10 rounded-full text-gray-300"
+                        className="rounded-full border border-[var(--border)] bg-[var(--surface)] px-4 py-2 text-xs text-gray-300 transition duration-300 hover:border-[var(--accent)] hover:text-[var(--accent)]"
                       >
                         {feature}
                       </span>
                     ))}
                   </div>
 
-                  <a
-                    href={project.live}
-                    target="_blank"
-                    className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-gradient-to-r from-pink-500 to-violet-600 hover:scale-105 transition duration-300 shadow-lg shadow-pink-500/30"
-                  >
-                    Visit Live
-                    <ExternalLink size={18} />
-                  </a>
+                  {/* Live Project Link */}
+                  {project.live && (
+                    <a
+                      href={project.live}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="group inline-flex items-center gap-2 rounded-lg bg-gradient-to-r from-[var(--primary)] to-[var(--secondary)] px-6 py-3 font-medium text-white shadow-lg shadow-[var(--glow-primary)] transition duration-300 hover:-translate-y-1 hover:shadow-[var(--glow-secondary)]"
+                    >
+                      Visit Live
+                      <ExternalLink
+                        size={17}
+                        className="transition-transform duration-300 group-hover:translate-x-1"
+                      />
+                    </a>
+                  )}
                 </motion.div>
 
-                {/* IMAGE */}
+                {/* Project Preview */}
                 <motion.div
-                  initial={{ opacity: 0, scale: 0.9 }}
+                  initial={{ opacity: 0, scale: 0.92 }}
                   whileInView={{ opacity: 1, scale: 1 }}
                   transition={{ duration: 0.8 }}
-                  viewport={{ once: true }}
+                  viewport={{ once: true, amount: 0.2 }}
                   className={isReverse ? "lg:order-1" : ""}
                 >
-                  <div className="relative group">
-                    <div className="absolute inset-0 bg-pink-500/20 blur-3xl rounded-full opacity-50 group-hover:opacity-70 transition duration-500"></div>
+                  <div className="group relative">
+                    {/* Glow */}
+                    <div className="absolute -inset-4 rounded-3xl bg-gradient-to-r from-[var(--primary)] to-[var(--secondary)] opacity-10 blur-3xl transition duration-500 group-hover:opacity-25" />
 
-                    <div className="relative bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl p-8 shadow-2xl group-hover:scale-105 transition duration-500">
-                      <Image
-                        src={project.image}
-                        alt={project.title}
-                        width={550}
-                        height={500}
-                        className="rounded-xl object-contain"
-                      />
+                    {/* Image Card */}
+                    <div className="relative overflow-hidden rounded-3xl border border-[var(--border)] bg-[var(--surface)] p-4 shadow-2xl backdrop-blur-xl transition duration-500 group-hover:-translate-y-2 group-hover:border-[var(--accent)]/40 md:p-6">
+                      <div className="mb-4 flex items-center gap-2 border-b border-[var(--border)] pb-4">
+                        <span className="h-3 w-3 rounded-full bg-red-400" />
+                        <span className="h-3 w-3 rounded-full bg-yellow-400" />
+                        <span className="h-3 w-3 rounded-full bg-green-400" />
+                        <span className="ml-auto text-xs text-gray-500">
+                          {project.title}
+                        </span>
+                      </div>
+
+                      <div className="relative overflow-hidden rounded-xl">
+                        <Image
+                          src={project.image}
+                          alt={`${project.title} preview`}
+                          width={550}
+                          height={500}
+                          className="h-auto w-full rounded-xl object-contain transition duration-700 group-hover:scale-[1.03]"
+                        />
+                      </div>
                     </div>
                   </div>
                 </motion.div>
@@ -109,7 +138,6 @@ export default function ProjectsSection() {
             );
           })}
         </div>
-
       </div>
     </section>
   );
